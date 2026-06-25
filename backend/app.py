@@ -28,11 +28,13 @@ def serve_index():
     return send_from_directory(app.static_folder, "index.html")
 
 @app.route("/api/health", methods=["GET"])
+@app.route("/health", methods=["GET"])
 def health_check():
     """Verify that the service is running and accessible."""
     return jsonify({"status": "ok"}), 200
 
 @app.route("/api/check-email", methods=["POST"])
+@app.route("/check-email", methods=["POST"])
 def api_check_email():
     """
     Accepts JSON body {"email": "..."} and returns the breach analysis.
@@ -86,6 +88,7 @@ def api_check_email():
         }), 500
 
 @app.route("/api/check-password", methods=["POST"])
+@app.route("/check-password", methods=["POST"])
 def api_check_password():
     """
     Accepts JSON body {"password": "..."} and returns the password risk evaluation.
